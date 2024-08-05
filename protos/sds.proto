@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+// Inspired by https://github.com/foursquare/quiver
+
+package io.github.slackhappy.sds;
+
+service StaticDataService {
+  rpc GetValuesSingle(GetRequest) returns (GetResponse) {}
+}
+
+message GetRequest {
+    string table = 1;
+    repeated string keys = 2;
+}
+
+message GetResponse {
+    map<int32, bytes> values = 1;
+}
